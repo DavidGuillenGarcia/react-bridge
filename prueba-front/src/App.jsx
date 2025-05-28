@@ -1,6 +1,7 @@
 import Title from "./components/Title";
 import Human from "./components/Human";
 import "./App.css";
+import { useEffect, useState } from "react";
 
 function App() {
   const humans = [
@@ -23,15 +24,55 @@ function App() {
         "https://imgs.search.brave.com/fg8xsDYw2r6m_VI1XOuI0R7kgtF00EtivFFMyMdvswU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9pbWdz/LnNlYXJjaC5icmF2/ZS5jb20vVTNqSFl1/d3hneUM2MHRFUk1Q/MFR6QWlyNjV0MGRJ/ODZrdFRJdDJFYV9Q/SS9yczpmaXQ6NTAw/OjA6MDowL2c6Y2Uv/YUhSMGNITTZMeTl0/WldScC9ZUzVuWlhS/MGVXbHRZV2RsL2N5/NWpiMjB2YVdRdk1U/QTQvTnpZeE16QXhO/aTl3YUc5MC9ieTlt/Y21GdFpXUXRjR2h2/L2RHOW5jbUZ3YUMx/b1lXNW4vYVc1bkxX/OXVMWGRoYkd3dS9h/bkJuUDNNOU5qRXll/RFl4L01pWjNQVEFt/YXoweU1DWmovUFRN/eFpqSnRjWEZvVm1j/NS9YMVpaVFVKNVZY/UlJlRFZzL1VYSmlh/ME54V205amJVZDQv/VUVSR1ZVVmtNMjg5.jpeg",
     },
   ];
+
+  const profesors = ["Nico", "Xabi", "Jose Luis"];
+
+  const [name, setName] = useState("Nico");
+  const [newName, setNewName] = useState("");
+  const [bgColor, setBgColor] = useState("");
+  let randomColor = "";
+  let colorLength = 6;
+
+  const colors = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+
+  const changeToRandomColor = () => {
+    for (let i = 1; i <= colorLength; i++) {
+      let randomNumber = Math.floor(Math.random() * 16);
+      randomColor = randomColor + colors[randomNumber];
+    }
+    setBgColor(randomColor);
+  };
+
+  useEffect(() => {
+    changeToRandomColor();
+    document.body.style.backgroundColor = `#${bgColor}`;
+  }, [newName]);
+
   return (
     <>
-      <h1>Hello</h1>
-      <Title name="Humans" />
-      {humans.map((human) => (
+      <Title name={name} />
+      {/* {humans.map((human) => (
         <div key={human.name}>
           <Human human={human} />
         </div>
-      ))}
+      ))} */}
+      <ul>
+        {profesors.map((profesor) => (
+          <li key={profesor} onClick={() => setName(profesor)}>
+            {profesor}
+          </li>
+        ))}
+      </ul>
+
+      <div>
+        <input
+          type="text"
+          name="textInput"
+          id="textInput"
+          onChange={(e) => setNewName(e.target.value)}
+        />
+        <button onClick={() => setName(newName)}>Add profesor</button>
+      </div>
     </>
   );
 }
