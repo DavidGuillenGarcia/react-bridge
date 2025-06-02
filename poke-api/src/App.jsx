@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar";
-import PokemonContainer from "./components/Pokemon/PokemonContainer";
+import CharacterContainer from "./components/Character/CharacterContainer";
 
 function App() {
   const [inputSearch, setInputSearch] = useState("");
@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <SearchBar onSearch={handleSearch} />
-      <PokemonContainer input={inputSearch} />
+      <CharacterContainer input={inputSearch} />
     </>
   );
 }

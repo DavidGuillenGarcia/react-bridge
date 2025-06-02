@@ -1,4 +1,4 @@
-const Pokemon = ({ name, image }) => {
+const Character = ({ name, image }) => {
   return (
     <div className="card character-card card-body m-2 p-3 shadow bg-dark text-white d-flex align-items-center">
       <img src={image} alt={name} className="character-image" />
@@ -6,4 +6,4 @@ const Pokemon = ({ name, image }) => {
     </div>
   );
 };
-export default Pokemon;
+export default Character;
