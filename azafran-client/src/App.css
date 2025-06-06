@@ -1,0 +1,11 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.form-container {
+  min-width: 425px;
+  min-height: 37vh;
+}
