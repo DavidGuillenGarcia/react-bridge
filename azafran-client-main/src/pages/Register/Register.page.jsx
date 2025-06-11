@@ -14,7 +14,7 @@ const Register = () => {
     user && password && repeatPassword && password == repeatPassword;
 
   const handleRegisterButtonClick = () => {
-    fetch("http://localhost:8080/register/", {
+    fetch("http://localhost:8000/register/", {
       headers: {
         "Content-type": "application/json",
       },
@@ -26,7 +26,7 @@ const Register = () => {
           console.log("Usuario registrado");
           navigate("/login");
         } else {
-            console.error("error found", res.body)
+          console.error("error found", res.body);
         }
       })
       .catch((err) => console.error(err));

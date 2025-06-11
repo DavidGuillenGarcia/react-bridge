@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Button, Flex, Input, Typography } from "antd";
 const { Title } = Typography;
@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLoginButtonClick = () => {
-    fetch("http://localhost:8080/login/", {
+    fetch("http://localhost:8000/login/", {
       headers: {
         "Content-type": "application/json",
       },
@@ -22,8 +22,8 @@ const Login = () => {
         if (!res.ok && data.msg) {
           setErrorMsg(data.msg);
         } else {
-          localStorage.setItem("accessToken", data.accessToken)
-          navigate('/');
+          localStorage.setItem("accessToken", data.token);
+          navigate("/");
         }
       })
       .catch((err) => {

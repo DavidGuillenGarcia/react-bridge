@@ -13,7 +13,6 @@ const Ingredient = ({ name, handleButtonClick }) => {
       }}
     >
       <Paragraph style={{ margin: 0 }}>{name}</Paragraph>
-      <button onClick={handleButtonClick}>Hola</button>
     </Flex>
   );
 };
