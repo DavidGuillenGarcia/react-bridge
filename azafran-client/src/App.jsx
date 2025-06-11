@@ -1,14 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router";
+import { Login } from "./pages/Login/Login.page";
+import { Register } from "./pages/Register/Register.page";
+import { Dashboard } from "./pages/Dashboard/Dashboard.page";
 import "./App.css";
-import LoginLayout from "./components/Templates/LoginLayout";
-import RegisterLayout from "./components/Templates/RegisterLayout";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<LoginLayout />} />
-        <Route path="/register" element={<RegisterLayout />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
   );
